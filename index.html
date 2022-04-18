@@ -3,63 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Cronometro</title>
   </head>
   <body>
     <div class="container">
       <h1 id="contador">00:00</h1>
       <div class="btns">
-        <button id="iniciar" onclick="iniciar()">iniciar</button>
+        <button class="green" id="btn_iniciar" onclick="iniciar()">iniciar</button>
         <button id="zerar" onclick="zerar()">zerar</button>
       </div>
     </div>
-    <script>
-      // variaveis iniciam em zero
-      var mm = 0;
-      var ss = 0;
-
-      // tempo inicia em 1000 milesimos
-      var tempo = 1000;
-
-      // inicia sem nada para receber a funçao
-      var cronometro;
-      function iniciar() {
-        cronometro = setInterval(function () {
-          contador();
-        },tempo);
-      }
-
-      //limpa o cronometro
-      function zerar() {
-        clearInterval(cronometro);
-        mm = 0;
-        ss = 0;
-        document.getElementById("contador").innerText = "00:00";
-      }
-
-      //zera os segundos e os "transforma" em minutos
-      function contador() {
-        ss++;
-        if (ss === 59) {
-          ss = 0;
-          mm++;
-          if (mm === 59) {
-            mm = 0;
-          }
-        }
-        if(ss < 10 && mm < 10){
-          contagem = "0"+mm +":"+"0"+ss
-        }else if(mm < 10){
-          contagem = "0"+mm+":"+ss
-        }else if(ss<10){
-          contagem = mm+":"+"0"+ss
-        }else{
-          contagem = mm+":"+ss
-        }
-        document.getElementById("contador").innerText = contagem;
-        return contagem;
-      }
-    </script>
+    <script src="index.js" type="application/javascript"></script>
   </body>
 </html>
