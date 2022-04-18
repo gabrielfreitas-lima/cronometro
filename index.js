@@ -1,40 +1,41 @@
-var btn_iniciar = document.getElementById("btn_iniciar");
-// variaveis iniciam em zero
+// variaveis iniciam em zero.
 var mm = 0;
 var ss = 0;
-// tempo inicia em 1000 milesimos
+// tempo inicia em 1000 milesimos.
 var tempo = 1000;
+var btn_iniciar = document.getElementById("btn_iniciar");
 var flag = false;
 
-// inicia sem nada para receber a funçao
+// inicia sem nada para receber a funçao.
 var cronometro;
 
 function iniciar() {
-  if(!flag){
-    // cronometro recebe o setInterval que tem 2 parametros, a funcao e o contador
+  // se flag for diferente de false, entra no if e executa o iniciar. Trocando a cor do botao e flag se torna true.
+  if (!flag) {
+    // cronometro recebe o setInterval que tem 2 parametros, a funcao e o contador.
     cronometro = setInterval(function () {
       contador();
     }, tempo);
-    btn_iniciar.innerText = "parar"
+    btn_iniciar.innerText = "Parar";
     btn_iniciar.classList.add("red");
     btn_iniciar.classList.remove("green");
-    flag = true
-  }else{
-    btn_iniciar.innerText = "iniciar"
+    flag = true;
+    // se nao, para o cronometro e troca a cor do botao, retornando flag como false.
+  } else {
+    btn_iniciar.innerText = "Iniciar";
     btn_iniciar.classList.add("green");
     btn_iniciar.classList.remove("red");
-    clearInterval(cronometro)
-    flag = false
+    clearInterval(cronometro);
+    flag = false;
   }
-
 }
-//zera os segundos e os "transforma" em minutos
+//zera os segundos e os "transforma" em minutos.
 function contador() {
   ss++;
-  if (ss === 59) {
+  if (ss === 60) {
     ss = 0;
     mm++;
-    if (mm === 59) {
+    if (mm === 60) {
       mm = 0;
     }
   }
@@ -50,11 +51,11 @@ function contador() {
   document.getElementById("contador").innerText = contagem;
   return contagem;
 }
-//limpa o cronometro
+//limpa o cronometro.
 function zerar() {
-  if(flag){
-    alert("pare para zerar");
-  }else{
+  if (flag) {
+    alert("Pare a aplicação para zerar");
+  } else {
     clearInterval(cronometro);
     mm = 0;
     ss = 0;
